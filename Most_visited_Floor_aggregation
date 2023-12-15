@@ -1,31 +1,8 @@
--- Most Visited Floors and LISTAGG of values
-
-create table entries ( 
-name varchar(20),
-address varchar(20),
-email varchar(20),
-floor int,
-resources varchar(10));
-
-insert into entries 
-values ('A','Bangalore','A@gmail.com',1,'CPU'),('A','Bangalore','A1@gmail.com',1,'CPU'),('A','Bangalore','A2@gmail.com',2,'DESKTOP')
-,('B','Bangalore','B@gmail.com',2,'DESKTOP'),('B','Bangalore','B1@gmail.com',2,'DESKTOP'),('B','Bangalore','B2@gmail.com',1,'MONITOR');
-
--- EXPECTED OUTPUT
-
-NAME TOTAL_VISITS MOST_VISITED_FLOOR RESOURCES_USED
-A      3			1					CPU,DESKTOP
-B		3			2					DESKTOP, MONITOR
-
-
--- MY SOLUTION
-
 WITH MOST_VISITED_FLOOR AS( 
-  SELECT NAME, FLOOR, RANK() OVER(PARTITION BY NAME ORDER BY FLR_VISIT_CNT DESC) AS FLR_VISIT_CNT_RANK FROM (SELECT 
-    NAME, FLOOR, COUNT(FLOOR) AS FLR_VISIT_CNT
+ 	SELECT
+    NAME, FLOOR, COUNT(FLOOR) AS FLR_VISIT_CNT,RANK() OVER(PARTITION BY NAME ORDER BY COUNT(FLOOR) DESC) AS FLR_VISIT_CNT_RANK
     FROM ENTRIES
     GROUP BY NAME, FLOOR
-    )
 ),
 
  NO_OF_VISTS(NAME, NO_OF_VISTS) AS (
