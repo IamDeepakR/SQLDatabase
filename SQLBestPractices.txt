@@ -1,0 +1,4 @@
+
+PLSQL/Database Programming
+1. Exceptions must not be swallowed
+2. Variable names should be meaningful and follow a defined naming convention
