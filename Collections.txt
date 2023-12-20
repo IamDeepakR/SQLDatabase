@@ -1,0 +1,36 @@
+
+PL/SQL lets you define two kinds of composite data types: collection and record.
+
+A composite data type stores values that have internal components.
+
+
+You can pass entire composite variables to subprograms as parameters, and you can access internal components of composite variables individually.
+
+In a collection, the internal components always have the same data type, and are called elements. You can access each element of a collection variable by 
+its unique index,with this syntax: variable_name(index). 
+To create a collection variable, you either define a collection type and then create a variable of that type or use %TYPE.
+
+In a record, the internal components can have different data types, and are called fields. You can access each field of a record variable by its name, 
+with this syntax: variable_name.field_name. 
+To create a record variable, you either define a RECORD type and then create a variable of that type or use %ROWTYPE or %TYPE.
+
+
+Example:
+
+
+
+Advantages
+
+
+
+Disadvantages
+
+
+
+
+
+Comapre to Cursor
+
+
+
+
