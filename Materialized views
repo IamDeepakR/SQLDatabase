@@ -1,0 +1,32 @@
+
+Definition :When the results of a view expression are stored in a database system, they are called materialized views
+
+
+
+
+
+Advantage
+ * No need to recompute query result when accessing MV data hence faster in performance. 
+ * Can create indexes to improve performance
+ * All data not lost even if the source table is dropped or if connectivity to source table is lost.
+
+Disadvantage
+ * Has storage and update overheads. 
+ * 
+
+
+Comparison to view
+
+* Stores data in Disk. 
+* Faster in performance.
+* can create Index
+* Can view data even if source table becomes inaccessible
+
+Comparison to a Table
+
+Refresh Methods ( ORACLE) 
+
+FAST- incremental 
+COMPLETE - FULL refresh
+ON DEMAND - At users wish. Using the package DBMS_MVIEW or DBMS_SYNC_REFRESH
+ON COMMIT - whenever source table data is changed followed by a commit via a transaction
