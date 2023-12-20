@@ -14,9 +14,58 @@ In a record, the internal components can have different data types, and are call
 with this syntax: variable_name.field_name. 
 To create a record variable, you either define a RECORD type and then create a variable of that type or use %ROWTYPE or %TYPE.
 
+Types:
+
+Collection Types : There are 3 viz. Associate Array, Varray and Nested Tables
+
+Difference in the 3 collections Types: 
+
+
+
 
 Example:
 
+
+DECLARE
+  -- Associative array indexed by string:
+  
+  TYPE PUNE_CITY IS TABLE OF NUMBER  -- Associative array type
+    INDEX BY VARCHAR2(64);            --  indexed by string
+  
+  Pune_population  PUNE_CITY;        -- Associative array variable
+  i  VARCHAR2(64);                    -- Scalar variable
+  
+BEGIN
+  -- Add elements (key-value pairs) to associative array:
+ 
+  Pune_population('KHARADI')  := 2000;
+--Pune_population('KHARADI')  := 2000;
+  Pune_population('KATRAJ')     := 750000;
+  Pune_population('Hinjewadi') := 1000000;
+ 
+  -- Change value associated with key 'Smallville':
+ 
+  Pune_population('KHARADI') := 2001;
+ 
+  -- Print associative array:
+ 
+  i := Pune_population.FIRST;  -- Get first element of array
+ 
+  WHILE i IS NOT NULL LOOP
+    DBMS_Output.PUT_LINE
+      ('Population of ' || i || ' is ' || Pune_population(i));
+    i := Pune_population.NEXT(i);  -- Get next element of array
+    
+  END LOOP;
+
+ DBMS_Output.PUT_LINE
+  ('Length Of Collection Pune_population is ' || Pune_population.COUNT );
+ Pune_population.DELETE;
+ DBMS_Output.PUT_LINE
+   ('Length Of Collection Pune_population is ' || Pune_population.COUNT );
+
+END;
+/
 
 
 Advantages
