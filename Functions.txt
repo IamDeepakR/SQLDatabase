@@ -1,0 +1,11 @@
+
+
+These are database objects that return a value on its execution.
+
+
+Examples:
+
+ * SUBSTR() , LENGTH(), LPAD(), RPAD(), LTRIM(), RTRIM(), NVL(), NVL2, EXTRACT(DAY FROM DATE), TO_DATE(), TO_CHAR() etc
+ *  MAX(), MIN(), AVG(), SUM(), COUNT()
+ * ANALYTICAL WINDOW FUNCTIONS: RANK, DENSE_RANK, ROW_NUMBER, LEAD, LAG etc
+ * 
